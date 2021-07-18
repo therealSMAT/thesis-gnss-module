@@ -12,6 +12,10 @@ client.on('connect', () => {
     console.log(`Connected to MQTT broker at ${process.env.MQTT_BROKER}`);
 });
 
+client.on('error', (err) => {
+    console.log(err);
+});
+
 client.on('message', (topic, _message) => {
     if (topic === 'transport/ride/start') {
         console.log('Trip has started');
